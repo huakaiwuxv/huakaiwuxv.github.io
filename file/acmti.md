@@ -5,4 +5,4 @@
 1. Numbered
 2. List
 
-[1160](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/file/1160.html)
+[1160](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/file/1160.md)
