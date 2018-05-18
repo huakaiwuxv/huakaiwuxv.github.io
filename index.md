@@ -1,10 +1,7 @@
-## Welcome to GitHub Pages
+## Welcome to My Page!
+   Nice To Meet You!
 
-You can use the [editor on GitHub](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/index.md) to maintain and preview the content for your website in Markdown files.
-
-Welcome To MyPage!
-
-## [我的题目](https://github.com/huakaiwuxv/huakaiwuxv.github.io/blob/master/1160.txt)
+## [My Work!](https://github.com/huakaiwuxv/huakaiwuxv.github.io/blob/master/1160.txt)
 
 ### Support or Contact
 
