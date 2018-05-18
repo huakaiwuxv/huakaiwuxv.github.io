@@ -4,7 +4,7 @@ You can use the [editor on GitHub](https://github.com/huakaiwuxv/huakaiwuxv.gith
 
 Welcome To MyPage!
 
-[我的题目](https://github.com/huakaiwuxv/First/1160.txt)
+## [我的题目](https://github.com/huakaiwuxv/huakaiwuxv.github.io/blob/master/1160.txt)
 
 ### Support or Contact
 
