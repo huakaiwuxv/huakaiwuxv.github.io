@@ -1,0 +1,48 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+#include<cstring>
+using namespace std;
+int n;
+int a[100001][12],sum[100001][12];
+int x,T;
+int maxT;
+int s;
+//思路：状态方程:sum[i][j]=max(sum[i-1][j-1],sum[i-1][j],sum[i-1][j+1])+a[i][j]; 其中,第i秒j位置   
+int main()  
+{  //1176
+	while (scanf("%d",&n)!=EOF&&n)
+	{
+		maxT=0;
+		s=0;
+		memset(a,0,sizeof(a));
+		memset(sum,0,sizeof(sum));
+		for (int i = 0; i < n; i++)
+		{
+			scanf("%d%d",&x,&T);
+			++a[T][x];
+			if(maxT<T)
+				maxT=T;
+		}
+		sum[1][4]=a[1][4];
+		sum[1][5]=a[1][5];
+		sum[1][6]=a[1][6];
+		for (int i = 2; i <= maxT; i++)
+		{
+			for (int j = 0; j < 11; j++)
+			{
+				sum[i][j]=sum[i-1][j];
+				if(j>0)
+					sum[i][j]=max(sum[i][j],sum[i-1][j-1]);
+				if(j<10)
+					sum[i][j]=max(sum[i][j],sum[i-1][j+1]);
+				sum[i][j]+=a[i][j];
+			}
+		}
+		for(int i=0;i<11;i++)
+            s=max(s,sum[maxT][i]);
+         printf("%d\n",s);
+	}
+	system("pause");
+	return 0;
+}
