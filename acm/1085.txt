@@ -1,0 +1,45 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+const int lmax=8000;
+int c1[lmax+1],c2[lmax+1];
+int n[4];
+int ni[4]={0,1,2,5};
+//思路：方程:(1+x+x^2+...)(1+x^2+x^4...)(1+x^5+...)  
+int main()  
+{  //1085
+	int m,i,j,k;
+	while (cin>>n[1]>>n[2]>>n[3] && !(n[1]==0&&n[2]==0&&n[3]==0))
+	{	m=n[1]+n[2]*2+n[3]*5;
+		memset(c1,0,sizeof(c1));
+        memset(c2,0,sizeof(c2));
+		for (i=0;i<=n[1];i++)
+		{	
+			c1[i]=1;		
+	    }
+		for (i=2;i<=3;i++)
+		{	
+			for (j=0;j<=m;j++)
+				for (k=0;k+j<=m&&k/ni[i]<=n[i];k+=ni[i])
+				{	
+					c2[j+k]+=c1[j];	
+				}
+			for (j=0;j<=m;j++)
+			{	
+				c1[j]=c2[j];	
+				c2[j]=0;	
+			}
+		}
+		for(i=0;i<=m;i++)
+        {
+			if(c1[i]==0)
+			{
+				break;
+			}
+        }
+		cout<<i<<endl;
+	}
+	system("pause");
+	return 0;
+}
