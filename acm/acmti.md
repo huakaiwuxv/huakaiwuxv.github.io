@@ -7,4 +7,5 @@
 [1087](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1087.md)
 [1176](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1176.txt)
 [2084](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2084.txt)
-
+[2059](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2059.txt)
+[2151](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2151.txt)

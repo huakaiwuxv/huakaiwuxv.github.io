@@ -1,0 +1,49 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int N;
+double L,C,T;
+double VR,VT1,VT2;
+double p[102];
+double dp[102];
+double m,t;
+//思路：状态方程:dp[i]=min(dp[j]+t); j<=i   
+int main()  
+{  //2059
+	while (cin>>L)
+	{
+		memset(dp,0,sizeof(dp));
+		memset(p,0,sizeof(p));
+		cin>>N>>C>>T;
+		cin>>VR>>VT1>>VT2;
+		for (int i = 1; i <= N; i++)
+		{
+			cin>>p[i];
+		}
+		p[N+1]=L;
+		dp[0]=0;
+		p[0]=0;
+		for(int i=1;i<=N+1;i++)dp[i]=1e9;
+		for (int i = 1; i <= N+1; i++)
+		{
+			
+			for (int j = 0; j < i; j++)
+			{
+				m=(p[i]-p[j])*1.0/VT2+dp[j];
+				if(p[i]-p[j]>C)
+					t=(p[i]-p[j]-C)*1.0/VT2+C*1.0/VT1+dp[j];
+				else
+					t=(p[i]-p[j])*1.0/VT1+dp[j];
+				if(j)t+=T;
+				dp[i]=min(dp[i],min(m,t));
+			}
+		}
+		if(dp[N+1]>(L*1.0/VR))
+			cout<<"Good job,rabbit!"<<endl;
+		else
+			cout<<"What a pity rabbit!"<<endl;
+	}
+	system("pause");
+	return 0;
+}
