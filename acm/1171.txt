@@ -1,0 +1,50 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+const int max1=250001;
+const int max2=51;
+int c1[max1],c2[max1];
+int V[max2],T[max2];
+int main()  
+{  //1171
+	int N,sum=0;
+	while (cin>>N&&(N>=0))
+	{	sum=0;
+		for (int i = 1; i <= N; i++)
+		{
+			cin>>V[i]>>T[i];
+			sum+=V[i]*T[i];
+		}
+		int s=sum/2;
+		memset(c1,0,sizeof(c1));
+        memset(c2,0,sizeof(c2));
+		for (int i=0;i<=V[1]*T[1];i+=V[1])
+		{	
+			c1[i]=1;		
+	    }
+		for (int i=2;i<=N;i++)
+		{	
+			for (int j=0;j<=sum;j++)
+				for (int k=0;k<=V[i]*T[i];k+=V[i])
+				{	
+					c2[j+k]+=c1[j];	
+				}
+			for (int j=0;j<=sum;j++)
+			{	
+				c1[j]=c2[j];	
+				c2[j]=0;	
+			}
+		}
+		for (int i=s;i>=0;--i)  
+        {  
+			if (c1[i]!=0)  
+            {  
+                cout<<sum-i<<' '<<i<<endl;  
+                break;  
+            }   
+        }  
+	}
+	system("pause");
+	return 0;
+}
