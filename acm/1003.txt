@@ -1,5 +1,4 @@
-##ÌâÄ¿Á´½Ó
-##[1003](http://acm.hdu.edu.cn/showproblem.php?pid=1003)
+
 #include<iostream>
 #include<algorithm>  
 #include<string>
