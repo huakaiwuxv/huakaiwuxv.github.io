@@ -1,0 +1,30 @@
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Scanner scanner = new Scanner(System.in);
+		int num = scanner.nextInt();
+		int[] nums = new int[num];
+		int num_digit = 0;
+		double d = 1;
+		int i = 0;
+		while(i < num)
+		{
+			num_digit = scanner.nextInt();
+			if(num_digit >= 2)
+			{
+				d = Math.log10(2 * Math.PI * num_digit) / 2 + num_digit * Math.log10(num_digit / Math.E) + 1;
+			}
+			nums[i] = (int)d;
+			i++;
+		}
+		//System.out.println("=====");
+		for(i = 0 ; i < num; i++)
+		{
+			System.out.println(nums[i]);
+		}
+	}
+
+}

@@ -1,0 +1,28 @@
+#include<iostream>
+#include<math.h>
+#include<algorithm>
+using namespace std;
+int g[122][122];
+int N;
+int abc(int n,int m){
+	if(g[n][m]!=-1)   //新使用的元素
+		return g[n][m];
+	if(n<1||m<1)       //不符合规定
+		return g[n][m]=0;
+	if(n==1||m==1) 
+		return g[n][m]=1;
+	if(n<m)            //已经无法再分了
+		return g[n][m]=abc(n,n);
+	if(n==m)            
+		return g[n][m]=abc(n,m-1)+1;
+    return g[n][m]=abc(n,m-1)+abc(n-m,m);
+}
+int main()
+{
+	while(cin>>N){
+		memset(g,-1,sizeof(g));
+		cout<<abc(N,N)<<endl;
+	}
+system("pause");
+return 0;
+}

@@ -1,0 +1,52 @@
+package hdu.syt.org;
+
+
+import java.util.Scanner;  
+class CA{
+	private double x;
+	private double y;
+	public CA(double x,double y) {
+		this.x=x;
+		this.y=y;
+	}
+	public double getx(){
+		return this.x;
+	}
+	public double gety(){
+		return this.y;
+	}
+}
+public class Main{  
+  
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);  
+        int N;
+        N=scanner.nextInt();
+        double m,n;
+        CA a[]=new CA[10];
+        while(N!=0){
+        	for(int i=0;i<N;i++){
+        		m=scanner.nextDouble();
+        		n=scanner.nextDouble();
+        		a[i]=new CA(m,n);
+        	}
+        	double length=0;
+        	length=distance(a[0],a[1]);
+        	for(int i = 0;i<N;i++){
+        		for(int j=i+1;j<N;j++){
+        			if(distance(a[i],a[j])<length)
+        				length=distance(a[i],a[j]);
+        				
+        		}
+        	}
+        	length=length/2;
+        	System.out.println(String.format("%.2f", length));
+        	N=scanner.nextInt();
+        }
+    }
+    public static double distance(CA m,CA n){
+    	double length=0; 
+    	length=Math.sqrt(Math.pow(m.gety()-n.gety(), 2)+Math.pow(m.getx()-n.getx(),2));
+    	return length;
+    }   
+}

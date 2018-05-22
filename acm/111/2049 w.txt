@@ -1,0 +1,39 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int f[23]={0};  
+int jie(int x)
+{
+	//int r=1;
+	if(x==0)
+		return 1;
+	if(x==1)
+		return 1;
+	else
+		return x*jie(x-1);
+}
+int main()  
+{  //2049
+
+    f[1]=0;  
+    f[2]=1;  
+    for(int i=3;i<22;i++)  
+    {  
+        f[i]=(i-1)*f[i-1]+(i-1)*f[i-2];  
+    }  
+	int n,m,s;
+    int t;cin>>t;  
+    while(t--)  
+    {  
+		cin>>n>>m;
+		s=1;
+		s=s*jie(n)/(jie(m)*jie(n-m));
+		s=s*f[m];
+		cout<<s<<endl;
+        //printf("%.2lf%c\n",f[n]*100,'%');  
+    }  
+
+system("pause");
+return 0;
+}

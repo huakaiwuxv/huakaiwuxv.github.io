@@ -1,0 +1,70 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+public class Main{
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int n = 0;
+        int k=0;
+        int []p = null;
+        int []r = null;
+        int temp1,temp2;
+    	int pos;
+		int []dp;
+        while(scanner.hasNext()){
+        	n=scanner.nextInt();
+        	k++;
+        	p=new int[n+1];
+        	r=new int[n+1];
+        	for(int i=1;i<=n;i++){
+        		p[i]=scanner.nextInt();
+        		r[i]=scanner.nextInt();
+        	}
+        	for(int i=1;i<=n;i++)
+        		for(int j=1;j<=n-i-1;j++)
+        			if(p[j]>p[j+1]){
+        				temp1=p[j];
+        				p[j]=p[j+1];
+        				p[j+1]=temp1;
+        				temp2=r[j];
+        				r[j]=r[j+1];
+        				r[j+1]=temp2;
+        			}
+        	//for(int i=0;i<n;i++)
+        		//System.out.println(p[i]+" "+r[i]);
+        	System.out.println("Case "+k+":");
+        	int len=1;
+
+    		dp=new int[r.length];
+    		dp[0]=-1;dp[1]=r[1];
+    		for (int i = 1; i <= n; i++)
+            {
+                if (r[i] >= dp[len])
+                {
+                    len = len + 1;
+                    dp[len] = r[i];
+                }
+                else
+                {
+                    pos = solve(r[i],1,len,dp);
+                    dp[pos] = r[i];
+                }
+            }
+    		len-=1;
+    		if(len==1)
+    			System.out.println("My king, at most 1 road can be built.");
+    		else if(len>1)
+    			System.out.println("My king, at most "+len+" roads can be built.");
+        }     
+    }
+
+	private static int solve(int r, int low, int len,int []dp) {
+		int mid;
+	    while (low <= len)
+	    {
+	        mid = (low + len) / 2;
+	        if (r >= dp[mid]) low = mid + 1;
+	        else len = mid - 1;
+	    }
+	    return low;
+	}
+}

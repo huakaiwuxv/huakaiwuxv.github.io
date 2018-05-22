@@ -1,0 +1,41 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+class A{
+	int x,y;
+	int next;
+	public A(int x,int y){
+		this.x=x;
+		this.y=y;
+		next=0;
+	}
+	public void addnext(){
+		next++;
+	}
+} 
+
+public class Main{  
+  
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int N,M;
+        int f,e;
+        A a[];
+        while(true){
+        	N=scanner.nextInt();
+        	M=scanner.nextInt();
+        	if(N+M==-2)
+        		return;
+        	a=new A[N];
+        	for(int i=0;i<N;i++)
+        		a[i]=new A(scanner.nextInt(),scanner.nextInt());
+        	for(int i=0;i<N-1;i++){
+        		f=scanner.nextInt();
+        		a[f].addnext();
+            	e=scanner.nextInt();
+        	}	
+        }
+    
+        
+        
+    }
+}

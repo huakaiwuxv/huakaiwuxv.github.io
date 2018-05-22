@@ -1,0 +1,51 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+public class Main{
+
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int N;
+        String A;
+        N=scanner.nextInt();
+        while(N--!=0){
+        	A=scanner.next();
+        	char []a=new char[26];
+        	//a=null;
+        	a[0]=A.charAt(0);
+        	boolean flag=true;
+        	int k=1;
+        	for(int i=1;i<A.length();i++){
+        		if(flag){
+        			flag=false;
+        			k=1;
+        		}	
+        		if(a[i-1]==A.charAt(i)){
+        			k++;a[i]=A.charAt(i);continue;
+        		}
+        		else{
+        			if(k==1){
+        				flag=true;
+        				System.out.print(a[i-1]);
+        				a[i]=A.charAt(i);
+        				
+        			}	
+        			else{
+        				flag=true;
+        				System.out.print(k);
+        				System.out.print(a[i-1]);
+        				a[i]=A.charAt(i);
+        				
+        			}
+        		}
+        		
+        		//System.out.println();
+        	}
+        	if(k==1)
+        		System.out.println(A.charAt(A.length()-1));
+        	else{
+        		System.out.print(k);
+            	System.out.println(A.charAt(A.length()-1));
+        	}
+        }
+    } 
+}

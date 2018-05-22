@@ -1,0 +1,24 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int main()  
+{  //2044
+	long long int f[55];  
+    f[1]=3;  
+    f[2]=6;
+	f[3]=6;
+    for(int i=4;i<55;i++)  
+    {  
+        f[i]=f[i-1]+2*f[i-2];  
+    }   
+	int n;
+    while(scanf("%d",&n)!=EOF)
+    {
+        printf("%lld",f[n]);
+		cout<<endl;
+    }
+
+system("pause");
+return 0;
+}

@@ -1,0 +1,33 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+public class Main{  
+  
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        double m=0;
+        System.out.println("n e");
+        System.out.println("- -----------");
+        for(int i=0;i<=1;i++){
+        	m+=1/jie(i);
+        	System.out.print(i+" ");
+        	System.out.println(String.format("%.0f", m));
+        }
+        for(int i=2;i<=2;i++){
+        	m+=1*1.0/jie(i);
+        	System.out.println(i+" "+m);
+        }
+        for(int i=3;i<=9;i++){
+        	m+=1*1.0/jie(i);
+        	System.out.print(i+" ");
+        	System.out.println(String.format("%.9f", m));
+        }     
+    }
+    public static int jie(int k){
+    	int op=1;
+    	if(k==0)
+    		return 1;
+    	for(int i=1;i<=k;i++)
+    		op*=i;
+    	return op;
+    }   
+}

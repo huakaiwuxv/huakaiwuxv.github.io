@@ -1,0 +1,24 @@
+#include<iostream>
+using namespace std;
+int main()
+{
+int n,m,i,a,sum;
+while(cin>>n)
+{
+if(n==0) break;
+cin>>m;
+if(n==1) {cout<<6*m+5<<endl;continue;}
+a=m;
+sum=6*m;
+for(i=1;i<n;i++)
+{
+cin>>m;
+if(a>m) sum+=4*(a-m);
+else sum+=6*(m-a);
+a=m;
+}
+sum=sum+5*n;
+cout<<sum<<endl;
+}
+return 0;
+}

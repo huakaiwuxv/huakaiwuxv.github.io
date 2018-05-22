@@ -1,0 +1,34 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+using namespace std;
+
+int main()  
+{  //1060
+	int T;
+	int N;
+	int b,base,t;
+	cin>>T;
+	for(int i=0;i<T;i++){
+		cin>>N;
+		t=1;
+		b=N;
+		base=N%10;
+		//if(base==0)return 0;
+		while(b){
+			if(b%2==1) 
+			{
+				//base=base*base%10;
+				t=t*base%10;
+
+			}
+			base=base*base%10;
+			b=b/2;
+		}
+		
+		cout<<t<<endl;
+	}
+	
+system("pause");
+return 0;
+}

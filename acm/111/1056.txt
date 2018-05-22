@@ -1,0 +1,31 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+using namespace std;
+int main()  
+{  //1056
+	int cnt;  
+    double a, len;  
+    while(scanf("%lf", &a)!=EOF && fabs(a-0.0)>0.000001)  
+    {  
+        if(a<=0.5)  
+        {  
+            cout<<1<<" card(s)"<<endl;  
+            continue;  
+        }  
+        else  
+        {  
+            cnt = 1;  
+            len = 0.5;  
+            while(len<a)  
+            {  
+                ++cnt;  
+                len += 1.0/(1+cnt);  
+            }  
+			cout<<cnt<<" card(s)"<<endl;
+        }  
+    }  
+	
+system("pause");
+return 0;
+}

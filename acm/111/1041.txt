@@ -1,0 +1,27 @@
+package hdu.syt.org;
+import java.math.BigInteger;
+import java.util.Arrays;
+import java.util.Scanner;  
+public class Main{
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        BigInteger one;
+        BigInteger []ans=new BigInteger[1001];
+        int i,n;
+        one=BigInteger.valueOf(1);
+        ans[1]=BigInteger.valueOf(0);
+        ans[2]=BigInteger.valueOf(1);
+        ans[3]=BigInteger.valueOf(1);
+        for(i=4;i<1001;i++){
+        	if(i%2==0)
+        		ans[i]=(ans[i-1].add(ans[i-1])).add(one);
+            else
+            	ans[i]=(ans[i-1].add(ans[i-1])).subtract(one);
+        }  
+        while(scanner.hasNext())
+        {
+            n=scanner.nextInt();
+            System.out.println(ans[n]);
+        }
+	}
+}

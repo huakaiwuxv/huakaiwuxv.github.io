@@ -1,0 +1,52 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+class A{
+	String m;
+	boolean p;
+	public A(String m){
+		this.m=m;
+		p=true;
+	}
+} 
+
+public class Main{  
+  
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int N,M,T;
+        A [][]a;
+        String k;
+        while(true){
+        	N=scanner.nextInt();
+        	M=scanner.nextInt();
+        	T=scanner.nextInt();
+        	if(N==0&&M==0&&T==0)
+        		return;
+        	a=new A[N][M];
+        	for(int i=0;i<N;i++){
+        		for(int j=0;j<M;j++){
+        			a[i][j].m=scanner.next();
+        		}
+        	}
+        	k=answer(a,T);
+        	System.out.println(k);
+        }
+    }
+    public static String answer(A[][] a,int T){
+    	a[0][0].p=false;
+    	for(int i=0;i<T;i++){
+    		if(a[i][i+1].m!="."){
+    			T--;
+    			a[i][i+1].p=false;
+    		}
+    	
+    		else if(a[i][i+1].m!="X"){}
+    			
+    	}
+    	if(a[0][0].m!="S")
+    		return "222";
+    	
+		return null;
+    	
+    }
+}

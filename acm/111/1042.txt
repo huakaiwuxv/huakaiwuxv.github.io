@@ -1,0 +1,29 @@
+#include<stdio.h>  
+#include<stdlib.h>  
+#include<string.h>  
+#include<math.h>  
+#define N 8000  
+int a[N];  
+int main(){  
+    int n;  
+    while(scanf("%d",&n)!=EOF)  
+       {   int i,j,k,t;     
+           memset(a,0,sizeof(a));  
+           a[0]=1;  
+           for(i=2;i<=n;i++)   
+             { for(t=0,j=0;j<N;j++)  
+                { k=a[j]*i+t;  
+                  a[j]=k%100000;  
+                   t=k/100000;   
+                }  
+             }   
+    for(i=N-1;!a[i];i--);     
+    printf("%d",a[i]);//前面的零不能要   
+    while(i)  
+    printf("%05d",a[--i]);//后面的零要输出   
+    printf("\n");   
+       }  
+      
+      
+    return 0;  
+}  

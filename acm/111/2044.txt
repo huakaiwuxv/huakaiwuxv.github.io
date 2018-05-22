@@ -1,0 +1,25 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int main()  
+{  //2044
+	long long int f[55];  
+    f[1]=1;  
+    f[2]=2;  
+    for(int i=3;i<55;i++)  
+    {  
+        f[i]=f[i-1]+f[i-2];  
+    }  
+    int t;  
+    scanf("%d",&t);  
+    while(t--)  
+    {  
+        int n,m;  
+        scanf("%d%d",&n,&m);  
+        printf("%lld\n",f[m-n]);  
+    }  
+
+system("pause");
+return 0;
+}

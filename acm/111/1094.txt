@@ -1,0 +1,18 @@
+package hdu.syt.org;
+import java.util.Scanner;
+public class Main{
+	public static void main(String[] args){
+		int T,a,b,c;
+		Scanner cin=new Scanner(System.in);
+		while(cin.hasNextInt()){
+			T=cin.nextInt();
+			c=0;
+			for(int i=0;i<T;i++){
+				a=cin.nextInt();
+				c+=a;
+			}
+			System.out.println(c);
+		}
+		
+	}
+}

@@ -1,0 +1,25 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<string>  
+using namespace std;
+int main()  
+{  //2007
+	int m;int n;
+	int sum1,sum2,temp;
+	while(cin>>m>>n)
+	{
+		sum1=sum2=0;
+		 if(m>n){temp=n;n=m;m=temp;}
+		for(int i=m;i<=n;i++)
+		{
+			if(i%2==0)
+				sum1=sum1+i*i;
+			else
+				sum2=sum2+i*i*i;
+		}
+		cout<<sum1<<" "<<sum2<<endl;
+	}
+system("pause");
+return 0;
+}

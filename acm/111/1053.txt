@@ -1,0 +1,51 @@
+#include<iostream>
+#include<vector>  
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<queue>      
+#include<functional>
+using namespace std;
+int num[31];
+priority_queue<int,vector<int>,greater<int>>q;
+int main()  
+{  
+char str[1000];
+int len,ac,bc;
+int a,b,c;
+while(gets(str)){ 
+        if(strcmp(str,"END")==0)  
+        break;
+		len=strlen(str);  
+        ac=len*8;  
+        memset(num,0,sizeof(num));  
+        while(!q.empty())  
+        {  
+            q.pop();//Çå¿Õ¶ÓÁÐ   
+        }  
+        for(int i=0;i<len;i++)  
+        num[str[i]-'A']++;
+		for(int i=0;i<=30;i++){
+			if(num[i])q.push(num[i]);
+		}
+		if(q.size()==1){  
+            bc=len;  
+            printf("%d %d 8.0\n",ac,bc);  
+        }  
+        else{  
+            bc=0;  
+            while(q.size()!=1)  
+            {  
+                a=q.top();q.pop();  
+                b=q.top();q.pop();  
+                c=a+b;bc+=c;  
+                q.push(c);  
+            }  
+            printf("%d %d %.1lf\n",ac,bc,(double)ac/(double)bc);  
+              
+        }  
+
+}
+system("pause");
+return 0;
+}

@@ -1,0 +1,21 @@
+#include <iostream> 
+using namespace std;
+int main() 
+{ 
+int T;
+unsigned long long A,B;
+cin>>T;
+if(T>=1&&T<=20)
+{
+	for(int i=0;i<T;i++)
+	{ 
+		cin>>A>>B;
+		cout<<"Case "<<i+1<<":"<<endl;
+		cout<<A<<" + "<<B<<" = "<<A+B<<endl<<endl;
+	}
+}
+else 
+	return 0;
+system("pause");
+return 0;
+}

@@ -1,0 +1,46 @@
+#include <iostream>
+using namespace std;
+void main(){   
+	int c;
+	int a=7,b=11;int m;
+	while(cin>>c){
+		if(c==0){
+			cout<<"no"<<endl;continue;
+		}
+		if(c==1){
+			cout<<"no"<<endl;continue;
+		}
+		m=0;a=7;b=11;
+		for(int i=2;i<=c;i++){
+			m=a+b;
+			a=b;
+			b=m;
+		}
+		if(m%3==0){
+			cout<<"yes"<<endl;
+		}
+		else{
+			cout<<"no"<<endl;}
+	}
+	system("pause");
+}
+
+
+#include<stdio.h>
+int main()
+{
+    int men[8], i, j, n;
+    men[0] = 1;
+     men[1] = 2;
+     men[2] = 0;
+     men[3] = 2;
+     men[4] = 2;
+     men[5] = 1;
+     men[6] = 0;
+     men[7] = 1;
+    while(scanf("%d", &n) != EOF)
+    {
+        if(!men[n%8]) printf("yes\n");
+        else printf("no\n");
+    }
+}

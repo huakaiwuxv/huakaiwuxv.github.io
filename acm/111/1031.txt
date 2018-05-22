@@ -1,0 +1,46 @@
+#include <iostream>
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+struct node
+{
+    int t;
+    double w;
+} ss[10005];
+bool cmp1(node a,node b)
+{
+    return a.w>b.w;
+}
+bool cmp2(node a,node b)
+{
+    return a.t>b.t;
+}
+int main()
+{
+    int n,m,i,j,k;
+    double s;
+    while(~scanf("%d%d%d",&n,&m,&k))
+    {
+        memset(ss,0,sizeof(ss));
+        for(j=1; j<=n; j++)
+        {
+            for(i=1; i<=m; i++)
+            {
+                ss[i].t=i;
+                scanf("%lf",&s);
+                ss[i].w+=s;    //每件衣服每个人的满意度累加
+            }
+        }
+
+        sort(ss+1,ss+m+1,cmp1);   //满意度从大到小排序
+        sort(ss+1,ss+k+1,cmp2);   //输出序号从大到小排序
+        for(i=1; i<=k; i++)
+        {
+            if(i!=1) printf(" ");
+            printf("%d",ss[i].t);
+        }
+        printf("\n");
+    }
+    return 0;
+}

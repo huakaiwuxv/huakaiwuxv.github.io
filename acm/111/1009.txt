@@ -1,0 +1,53 @@
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <iomanip>
+
+using namespace std;
+
+struct food
+{
+	double j, f, percent;
+};
+
+bool cmp(food a, food b)
+{
+	return a.percent > b.percent;
+}
+
+int main()
+{
+	double M, N;	
+	
+	while(cin >> M >> N && M != -1 || N != -1)
+	{
+		double final = 0;
+		food temp;
+		vector<food> v;
+		for (int i = 0; i < N; i++)
+		{
+			cin >> temp.j >> temp.f;
+			temp.percent = temp.j / temp.f;
+			v.push_back(temp);
+		}
+		sort(v.begin(),v.end(),cmp);
+		int count = 0;
+		while(M>0 && count < N)
+		{
+			if(v[count].f <= M)
+			{
+				M -= v[count].f;
+				final += v[count].j;
+				count++;
+			}
+			else
+			{
+				final += M * v[count].percent;
+				count++;
+				M = 0;
+			}
+		}
+		cout << setprecision(3) << fixed << final << endl;
+	}
+	return 0;
+}

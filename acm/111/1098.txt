@@ -1,0 +1,26 @@
+#include<iostream>
+#include<vector>  
+#include<algorithm>  
+#include<cmath>  
+using namespace std;
+int main()  
+{  
+	int k;int d;
+	while (cin>>k)
+	{
+	    d=0;
+		for(int i=0;i<65;i++){
+			if((18+k*i)%65==0)
+			{
+				d=1;
+				cout<<i<<endl;
+				break;
+			}
+		}
+		if(d==0)
+			cout<<"no"<<endl;
+	}
+
+system("pause");
+return 0;
+}

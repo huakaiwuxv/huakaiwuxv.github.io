@@ -1,0 +1,20 @@
+import java.util.Scanner;  
+import java.math.BigInteger;  
+public class Main{  
+  
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);  
+        BigInteger a,b,c;  
+        int t;  
+        t=scanner.nextInt();  
+        for(int i=1;i<=t;i++){  
+            a=scanner.nextBigInteger();  
+            b=scanner.nextBigInteger();  
+            c=a.add(b);  
+            System.out.println("Case "+i+":");  
+            System.out.println(a+" + "+b+" = "+c);  
+            if(i<t)  
+                System.out.println();  
+        }  
+    }  
+}  

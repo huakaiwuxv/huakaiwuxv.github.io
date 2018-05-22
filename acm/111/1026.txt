@@ -1,0 +1,102 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<algorithm>
+#include<iostream>
+using namespace std;
+struct point{
+	int last;//记录上一步从哪里来
+	int x,y; //坐标
+	int step;//记录当前的步数
+	int HP;//记录小怪血量（即 需要停留多久）
+};
+int dir[4][2]={0,1,1,0,-1,0,0,-1};//控制方向。
+point path[101010];       //用来代替队列的数组
+char map[110][110];     
+int N,M;
+
+
+int cmp(point a,point b)//模拟优先队列的功能，（按步数排序）
+{
+	if(a.step<b.step)
+		return 1;
+	return 0;
+}
+int bfs()
+{
+	int front=0;//队列头
+	int rear=0;//队列尾
+	point u,v; 
+	u.step=u.HP=u.x=u.y=0;
+	u.last=-1;     //把起点的前驱标记为-1，方便在输出的时候作为结束条件
+	path[rear++]=u;   //加入队尾
+	map[0][0]='X';  //走过的路标记，以免重复来过
+	while(front<rear)
+	{
+		sort(path+front,path+rear,cmp);//模仿优先队列排序
+		u=path[front++];//取队头元素
+		for(int i=0;i<4;i++)
+		{
+			v.x=u.x+dir[i][0];
+			v.y=u.y+dir[i][1];
+						
+			if(v.x>=0&&v.x<N&&v.y>=0&&v.y<M && map[v.x][v.y]!='X')//可以继续走
+			{
+				if(map[v.x][v.y]!='.')   //不是‘X’‘‘.’那便是数字
+					v.HP=map[v.x][v.y]-'0';//注意减掉‘0‘，记下怪物血量
+				else
+					v.HP=0;
+				
+					v.step=v.HP+u.step+1; //步数
+					v.last=front-1;      //前驱坐标在队列中的位置		map[v.x][v.y]='X';  //标记走过了
+					path[rear++]=v;     //装进队尾 
+				
+					if(v.x==N-1&&v.y==M-1)//出口
+					{
+						return rear-1;
+					}
+			}
+		}
+	}
+	return -1;
+}
+void output(int rear)
+{
+	point v=path[rear];
+	if(v.last==-1)  //没有前驱了
+	{
+		return;
+	}
+	point u=path[v.last];//前驱 
+	output(v.last);
+	
+	printf("%ds:(%d,%d)->(%d,%d)\n",v.step-v.HP, u.x,u.y, v.x,v.y);
+	if(v.HP>0)  //有野怪 
+	{
+		for(int i=v.HP;i>0;i--)
+		{
+			printf("%ds:FIGHT AT (%d,%d)\n",v.step-i+1,v.x,v.y);
+		}
+	}
+}
+
+int main()
+{
+	while(~scanf("%d%d",&N,&M))
+	{
+		for(int i=0;i<N;i++)
+			scanf("%s",map[i]);
+		int v=bfs();
+		if(v>=0)
+		{
+			printf("It takes %d seconds to reach the target position, let me show you the way.\n",path[v].step);
+			output(v);
+			
+		}
+		else
+		{
+			puts("God please help our poor hero.");
+		}
+		puts("FINISH");
+	}
+	return 0;
+}

@@ -1,0 +1,24 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+import java.util.Arrays;  
+public class Main {  
+  
+    public static void main(String[] args) {  
+        Scanner Input=new Scanner(System.in);  
+        char [] test=new char [3];   
+        while(Input.hasNext()){//如果输入未完结,相当于C中的while(!=EOF)  
+  
+            String a=Input.nextLine();//直接读取这行当中的字符串。   
+            for(int i=0;i<3;i++){  
+                test[i]=a.charAt(i);//字符串处理每次读取一位。  
+            }  
+            Arrays.sort(test);  
+            System.out.print(test[0]);  
+            for(int i=1;i<3;i++){  
+                System.out.print(" ");  
+                System.out.print(test[i]);  
+            }  
+            System.out.println();             
+        }  
+    }  
+}  

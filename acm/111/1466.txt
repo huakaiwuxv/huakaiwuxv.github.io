@@ -1,0 +1,42 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int arrbool[21][200]={0};  
+int j,r,n;
+int main()  
+{  //2049
+	arrbool[0][0]=arrbool[1][0]=1; 
+	for(int m=2;m<21;m++)
+	{
+		arrbool[m][0]=1;
+//		j=1;
+//		k=0;
+		for (r=1; r < m; r++)
+		{
+			for (j = 0; j <= r*(r-1)/2; j++)
+			{
+				if(arrbool[r][j]==1)
+					arrbool[m][(m-r)*r+j]=1;
+			}
+		}
+	}
+	while (cin>>n)
+	{
+		cout<<0<<" ";
+		for (int i = 1; i < n*(n-1)/2; i++)
+		{
+			if (arrbool[n][i]==1)
+			{
+				cout<<i<<" ";
+			}
+		}
+		if (arrbool[n][n*(n-1)/2]==1)
+		{
+			cout<<n*(n-1)/2<<endl;
+		}
+	}
+
+system("pause");
+return 0;
+}

@@ -1,0 +1,51 @@
+#include<iostream>
+#include<algorithm>
+using namespace std;
+bool compare(int c,int d){
+	return c<d;
+}
+int main()
+{int n;
+int a[1000];
+int b[1000];
+int s;
+while(cin>>n&&n){
+	for(int i=0;i<n;i++){
+		cin>>a[i];
+	}
+	for(int i=0;i<n;i++){
+		cin>>b[i];
+	}
+	sort(a,a+n,compare);
+	sort(b,b+n,compare);
+	s=0;
+	int tx,kx;
+	int td,kd;
+	tx=kx=0;
+	td=kd=n-1;
+	for(int i=0;i<n;i++){
+		if(a[td]>b[kd]){
+			td--;kd--;s++;
+		}
+		else if(a[td]<b[kd]){
+			kd--;tx++;s--;
+		}
+		else{
+			if(a[tx]>b[kx]){
+				tx++;kx++;s++;
+			}
+			else if(a[tx]>b[kx]){
+				tx++;kd--;s--;
+			}
+			else{
+				if(a[tx]<b[kd]){
+					tx++;kd--;s--;
+				}
+			}
+		}
+	}
+	cout<<s*200<<endl;
+}
+system("pause");
+return 0;
+}

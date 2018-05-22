@@ -1,0 +1,92 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<string>  
+using namespace std;
+struct milks
+{
+	char s[200];
+	int p;
+	double v;
+	double weight;
+}milk[110];
+int main()  
+{  //1070
+	int T,N;
+	cin>>T;
+	int pin;
+	double temp1;
+	double temp2;
+	int abc;
+	int def;
+	int m;
+	for(int i=0;i<T;i++)
+	{
+		m=0;
+		cin>>N;
+		for(int j=0;j<N-m;j++)
+		{
+			cin>>milk[j].s>>milk[j].p>>milk[j].v;
+			milk[j].weight=1;
+			if(milk[j].v<200)
+			{
+				j--; 
+				m++;
+			}
+		}
+		//for(int j=0;j<N-m;j++)
+		//{
+		//	cout<<milk[j].s<<milk[j].p<<milk[j].v;
+			
+		//}
+		for(int j=0;j<N-m;j++)
+		{  
+			if(milk[j].weight==0)
+				continue;
+			pin=milk[j].v/200;
+			//cout<<pin<<endl;//................
+			if(pin>=5)
+				milk[j].weight=milk[j].p/5;
+			else
+				milk[j].weight=milk[j].p/pin;
+			//cout<<milk[j].weight<<endl;//................
+		}
+		temp1=milk[0].weight;
+		abc=0;def=0;
+		for(int j=1;j<N-m;j++)
+		{
+			
+			if(milk[j].weight<temp1)
+			{   
+				temp1=milk[j].weight;
+				abc=j;
+			}
+		}
+		temp2=milk[0].weight;
+		for(int j=1;j<N-m;j++)
+		{
+			if(abc==0)
+			{
+				temp2=milk[1].weight;
+				def=1;
+			}
+			if(abc==j)
+				continue;
+			if(milk[j].weight<temp2)
+			{   
+				temp2=milk[j].weight;
+				def=j;
+			}
+		}
+		if(milk[abc].weight==milk[def].weight){
+			if(milk[abc].v>=milk[def].v )
+				cout<<milk[abc].s <<endl;
+			else
+				cout<<milk[def].s <<endl;
+		}
+		else
+			cout<<milk[abc].s <<endl;
+	}
+system("pause");
+return 0;
+}

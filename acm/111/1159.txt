@@ -1,0 +1,32 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+string a,b;
+int lengtha,lengthb;
+int sequence[1000][1000];
+int main()  
+{  //1159
+
+	while (cin>>a>>b)
+	{
+		memset(sequence,0,sizeof(sequence));
+		lengtha=a.size();
+		lengthb=b.size();
+		for (int i = 1; i <= lengtha; i++)
+		{
+			for (int j = 1; j <= lengthb; j++)
+			{
+				if (a[i-1]==b[j-1])
+				{
+					sequence[i][j]=sequence[i-1][j-1]+1;
+				}
+				else 
+                    sequence[i][j]=max(sequence[i-1][j],sequence[i][j-1]);
+			}
+		}
+		cout<<sequence[lengtha][lengthb]<<endl;
+	}
+	system("pause");
+	return 0;
+}

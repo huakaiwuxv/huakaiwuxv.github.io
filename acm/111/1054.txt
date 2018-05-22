@@ -1,0 +1,98 @@
+题目意思：
+给你一棵树
+
+要你在树上的一些点上放置士兵，放的节点上面是一个
+
+问你怎样放最少的能使所有的边被照顾到，一个士兵可以同时照顾和他所处节点相连的边
+
+解题思路：
+
+最少点覆盖问题
+
+可以用树形DP解决
+
+我们把无根树抽象成一棵有根树，0为树根
+
+对于任意一个节点i来说，设dp[i][0]表示在该节点不放士兵
+
+dp[i][1]表示在该节点放置士兵
+
+那么结合他的子节点就可以得到状态转移方程
+
+dp[i][1] = sum(dp[k][0])+1  k为i的子节点，下同，因为本节点没放，则子节点一定要放
+
+dp[i][0] = sum( min(dp[k][0],dp[k][1]) )  因为本节点放了，所以取子节点放和不放的最小值
+
+最后答案就是min( dp[0][0] ,dp[0][1] )
+
+虽然是一道很简单的树形DP，但是对与学习树形DP很有启发意义
+
+下面上代码：
+#include<iostream>  
+#include<vector>  
+#include<cstring>  
+#include<cstdio>  
+#include<algorithm>  
+#include<cmath>  
+using namespace std;  
+   
+const int maxn = 1600;  
+int dp[maxn][2];  
+int n;  
+vector<int> tree[maxn];  
+   
+int min(int a,int b)  
+{  
+    return a<b?a:b;  
+}  
+   
+void dfs(int fa,int now)  
+{  
+    dp[now][0] = 0;  
+    dp[now][1] = 1;  
+   
+    int len = tree[now].size();  
+    int i;  
+   
+    for(i=0;i<len;i++)  
+    {  
+        int t=tree[now][i];  
+        if(t!=fa)  
+        {  
+            dfs(now,t);  
+            dp[now][0] += dp[t][1];  
+            dp[now][1] += min(dp[t][0],dp[t][1]);  
+        }  
+    }  
+       
+}  
+   
+   
+int main()  
+{  
+    while(~scanf("%d",&n))  
+    {  
+        int i;  
+        for(i=0;i<n;i++)  
+        {  
+            tree[i].clear();  
+        }  
+        for(i=0;i<n;i++)  
+        {  
+            int b;  
+            int a;  
+            int j;  
+            scanf("%d:(%d)",&a,&b);  
+            for(j=0;j<b;j++)  
+            {  
+                int x;  
+                scanf("%d",&x);  
+                tree[a].push_back(x);  
+                tree[x].push_back(a);  
+            }  
+        }  
+        dfs(-1,0);  
+        cout<<min(dp[0][0],dp[0][1])<<endl;  
+    }  
+    return 0;  
+}

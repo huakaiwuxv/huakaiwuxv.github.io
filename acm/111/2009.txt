@@ -1,0 +1,23 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<string>  
+using namespace std;
+double a[100];
+int main()  
+{  //2008
+	double n;int m;
+	double sum,k;
+	while(cin>>n>>m){
+		sum=n;
+		for(int i=1;i<m;i++)
+		{
+			k=sqrt(n);
+			sum+=k;
+			n=k;
+		}
+		printf("%.2lf\n",sum);
+	}
+system("pause");
+return 0;
+}

@@ -1,0 +1,16 @@
+#include <iostream>  
+using namespace std;
+int main()  
+{int n,u,d;
+while(cin>>n>>u>>d&&n){
+	int s=n-u;
+	int h=s/(u-d)*2;
+	if(s%(u-d)==0)
+		h=h+1;
+	else
+	h=h+3;
+	cout<<h<<endl;
+}
+system ("pause");  
+return 0;  
+}  

@@ -1,0 +1,33 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+
+public class Main{  
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int N;
+        int n,m;
+        int k;
+        N=scanner.nextInt();
+        System.out.println();
+        while((N--)!=0){
+        	int li=1;
+        	while(true){
+        		n=scanner.nextInt();
+        		m=scanner.nextInt();
+        		k=0;
+        		if(m==0&&n==0){
+                	System.out.println();
+        			return;
+        		}
+        		for(int i=1;i<n-1;i++){
+        			for(int j=i+1;j<n;j++){
+        				if((Math.pow(i, 2)+Math.pow(j, 2)+m)%(i*j)==0)
+        					k++;
+        			}
+        		}
+        		System.out.println("Case "+li+": "+k);
+        		li++;
+        	}
+        }
+    } 
+}

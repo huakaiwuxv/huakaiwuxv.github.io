@@ -1,0 +1,51 @@
+#include <iostream>    
+using namespace std;  
+  
+int countTimes(int n)  
+{  
+    int times = 1;  
+    do  
+    {  
+        if((n%2)!=0)  
+        {  
+            n = 3 * n + 1;  
+        }  
+        else  
+        {  
+            n /=2;  
+        }  
+        ++times;  
+    }while(n != 1);  
+    return times;  
+}  
+int main()  
+{  
+    int i, j;  
+    while (scanf ("%d%d", &i, &j) != EOF)  
+    {  
+        int bi1, bi2, bi3;  
+        if (i > j)  
+        {  
+            bi1 = j;  
+            bi2 = i;  
+        }  
+        else  
+        {  
+            bi1 = i;  
+            bi2 = j;  
+        }  
+        int maxTimes;  
+        maxTimes = countTimes (i);  
+        for (int k = bi1 + 1; k <= bi2; k++)  
+        {  
+            bi3 = countTimes(k);  
+            if (bi3 > maxTimes)  
+            maxTimes = bi3;  
+        }  
+        cout << i << ' ' << j << ' ' << maxTimes << endl;  
+  
+    }  
+    system ("pause");  
+    return 0;  
+  
+}  

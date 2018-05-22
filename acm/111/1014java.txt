@@ -1,0 +1,26 @@
+package hdu.syt.org;
+import java.util.Scanner;  
+
+public class Main{  
+	 public static  boolean look(int t,int m){
+	    	for(int i=2;i<=t&&i<=m;i++)
+	    		if(t%i==0&&m%i==0)
+	    			return false;
+			return true;
+	}
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int t,m;
+        while(scanner.hasNextInt()){
+        	t=scanner.nextInt();
+        	m=scanner.nextInt();
+    		System.out.printf("%10d%10d    ",t,m);
+        	if(look(t,m)){
+        		System.out.printf("Good Choice\n\n");
+        	}
+        	else{
+        		System.out.printf("Bad Choice\n\n");
+        	}
+        }
+    } 
+}

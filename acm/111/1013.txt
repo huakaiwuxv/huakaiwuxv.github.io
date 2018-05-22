@@ -1,0 +1,23 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<string>  
+using namespace std;
+int main()  
+{  //1013
+	string m;
+        while(cin>>m && m!="0"){
+			int  digitRoot=0;
+			for(int s_index = 0; s_index < m.length(); s_index++)
+			{
+			   digitRoot += (m[s_index] - '0');
+			   if(digitRoot > 9)
+			   {
+					digitRoot = digitRoot%10 + digitRoot/10;
+				}
+			}
+			cout<<digitRoot<<endl;
+        }
+system("pause");
+return 0;
+}

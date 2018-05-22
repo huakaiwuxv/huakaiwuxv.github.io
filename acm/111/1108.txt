@@ -1,0 +1,26 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<string>  
+using namespace std;
+int gcd(int da,int xiao)
+{
+	int temp;
+	while (xiao!=0)
+	{
+		temp=da%xiao;
+		da=xiao;
+		xiao=temp;
+	}
+	return da;
+}
+int main()  
+{  //1108
+	int m,n;
+	while(cin>>m>>n)
+	{
+		cout<<m*n/gcd(m,n)<<endl;
+	}
+system("pause");
+return 0;
+}

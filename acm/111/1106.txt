@@ -1,0 +1,54 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+using namespace std;
+int main()  
+{  //1106
+	char a;
+	int m;
+	int i=0;
+	int signal=0;
+	while (cin>>a)
+	{
+		i=0;signal=0;
+		int sum[1001]={0};
+
+		if(a=='5')
+			continue;
+		while (a!='\n')
+		{
+			char mn=a;
+			if(a!='5')
+			{
+				signal=0;
+				m=a-'0';
+				sum[i]=m+sum[i]*10;
+			}
+			else{
+				if(signal==0)
+				{
+					signal=1;
+					i++;
+				}
+			}
+			a = getchar();  
+			if(a == '\n' && mn !='5')//处理最后一位没有5的情况  
+			{  
+				i++;  
+			}  
+		}
+		
+		if(a=='\n')
+		{
+			sort(sum,sum+i);
+			for(int j=0;j<i-1;j++)
+			{
+				cout<<sum[j]<<" ";
+			}
+			cout<<sum[i-1]<<endl;
+			i=0;
+		}
+	}
+system("pause");
+return 0;
+}

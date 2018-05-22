@@ -1,0 +1,19 @@
+#include<iostream>
+#include<algorithm>  
+#include<cmath>  
+#include<string>  
+using namespace std;
+char str[1001];
+int main()  
+{  //1062
+	int i;  
+    double ave,cnt;  
+    for(i=0;i<12;i++)  
+    {  
+        cin>>cnt;  
+        ave+=cnt;  
+    }  
+    cout<<"$"<<ave/(12.0)<<endl; 
+system("pause");
+return 0;
+}

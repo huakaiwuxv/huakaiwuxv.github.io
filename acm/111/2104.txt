@@ -1,0 +1,23 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int gcd(int n,int m){
+	return (m == 0) ? n : gcd(m, n%m);
+}
+int main()  
+{  //2035
+	int N,M;
+	while(cin>>N>>M)
+	{
+		if(N==-1&&M==-1)
+			break;
+		if(gcd(N,M)==1)
+			cout<<"YES"<<endl;
+		else
+			cout<<"POOR Haha"<<endl;
+
+	}
+system("pause");
+return 0;
+}

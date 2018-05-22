@@ -1,0 +1,17 @@
+#include <iostream>    
+using namespace std;
+const double pi=acos(-1.0);
+int main()  
+{double d;
+int r;
+double t;
+int icase=0;
+while(cin>>d>>r>>t&&r){
+	icase++;
+	double re1=pi*d*r/(12*5280);
+	double re2=re1/t*3600;
+	printf("Trip #%d: %.2lf %.2lf\n",icase,re1,re2);
+}
+system ("pause");  
+return 0;  
+}  

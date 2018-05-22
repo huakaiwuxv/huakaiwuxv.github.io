@@ -1,0 +1,25 @@
+package hdu.syt.org;
+import java.math.BigInteger;
+import java.util.Scanner;  
+public class Main{
+    public static void main(String[]args){  
+        Scanner scanner=new Scanner(System.in);
+        int t;
+        t=scanner.nextInt();
+        BigInteger one;
+        BigInteger one2;
+        for(int i=0;i<t;i++){
+        	one=BigInteger.valueOf(0);
+        	while(scanner.hasNext()){
+        		one2=scanner.nextBigInteger();
+        		if (one2.equals(BigInteger.ZERO))  
+                     break;  
+        		one=one.add(one2);
+        	}
+        	System.out.println(one);
+        	if(i!=t-1)  
+                System.out.println();  
+        	
+        }
+    }
+}

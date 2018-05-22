@@ -1,0 +1,27 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int main()  
+{  //2044
+	double f[50];  
+    f[1]=0;  
+    f[2]=1;  
+    for(int i=3;i<50;i++)  
+    {  
+        f[i]=(i-1)*f[i-1]+(i-1)*f[i-2];  
+    }  
+	int n;
+    int t;cin>>t;  
+    while(t--)  
+    {  
+		cin>>n;
+		for(int j=1;j<=n;j++){
+			f[n]/=j;
+		}
+        printf("%.2lf%c\n",f[n]*100,'%');  
+    }  
+
+system("pause");
+return 0;
+}
