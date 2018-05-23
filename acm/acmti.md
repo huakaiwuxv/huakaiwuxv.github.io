@@ -9,6 +9,7 @@
 [2084](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2084.txt)
 [2059](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2059.txt)
 [2151](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2151.txt)
+[1267](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1267.txt)
 # muhanshu
 [1398](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1398.txt)
 [1085](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1085.txt)
@@ -24,3 +25,4 @@
 [2041](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2041.txt)
 [2067](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2067.txt)
 [1130](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1130.txt)
+[1131](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1131.txt)

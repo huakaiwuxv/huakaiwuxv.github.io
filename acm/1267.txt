@@ -1,0 +1,27 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+const int maxn = 21;  
+long long a[maxn][maxn];  
+int main()  
+{ 
+   //1267
+	memset(a,0,sizeof(a));  
+    for (int i = 0; i < maxn; ++i) {  
+        a[i][0] = 1;//当D的个数为0时，无论多少个H,它的排列数都只有一种.  
+    }  
+    //需要注意的是,这里a[0][i] = 0 .没初始化,因为默认值就是0.因为没有H,这种方案就不成立了   
+    for (int i = 1; i < maxn; ++i) {  
+        for (int j = 1; j < i+1; ++j) {  
+            a[i][j] = a[i-1][j] + a[i][j-1];  
+        }  
+    }   
+  
+    int m, n;  
+    while (scanf("%d%d", &m, &n) != EOF) {  
+        printf("%lld\n", a[m][n]);  
+    }  
+	system("pause");
+	return 0;
+}
