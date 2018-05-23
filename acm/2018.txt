@@ -1,0 +1,23 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+int a[55];  
+int main() {  
+    int n;   
+	memset(a,0,sizeof(a));
+	a[1]=1;
+	a[2]=2;
+	a[3]=3;
+	a[4]=4;
+	for (int i = 5; i < 55; i++)
+	{
+		a[i]=a[i-1]+a[i-3];
+	}
+	while (cin>>n&&n!=0)
+	{
+		printf("%d\n",a[n]);  
+	}
+	system("pause");
+	return 0;
+}

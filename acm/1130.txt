@@ -1,0 +1,46 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+const int lmax=100;
+int a[101][lmax+1];
+//h(n)=(4n-2)/(n+1)*h(n-1)(n>1) h(0)=1
+int main()  
+{ 
+   //2067
+	memset(a,0,sizeof(a));
+	int x;
+	a[1][1]=1;
+	for (int i = 2; i < 101; i++)
+	{
+		x=0;
+		for (int j = 1; j < 101; j++)
+		{
+			a[i][j]=a[i-1][j]*(4*i-2)+x;
+			x=a[i][j]/10;
+			a[i][j]=a[i][j]%10;
+		}
+		x=0;int z=i+1;
+		for (int j = 100; j >= 1; j--)
+		{
+			int k=a[i][j];
+			a[i][j]=(k+x*10)/z;
+			//a[i][j]=a[i][j]/10;
+			x=(x*10+k)%z;
+		}
+	}
+	int n,i;
+	int s=0;
+	while (cin>>n)
+	{
+		i=100;
+		while(a[n][i]==0)i--;
+		for (; i >= 1; i--)
+		{
+			cout<<a[n][i];
+		}
+		cout<<endl;
+	}
+	system("pause");
+	return 0;
+}

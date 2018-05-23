@@ -1,0 +1,68 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+
+//f(m,n)= C(m+n,n)-C(m+n,m+1)
+//f(m,n)*m!*n!=(m-n+1)*(m+n)!/(m+1)
+//big number
+int a[101];
+void dashu(int x)
+{
+	int temp=0;
+	for (int j = 100; j >=0; j--)
+	{
+		temp+=a[j]*x;
+		a[j]=temp%10000;
+		temp=temp/10000;
+	}
+}
+void jiecheng(int y,int z)
+{
+	for (int k = y; k >= 2; k--)
+	{
+		if(k!=z)
+			dashu(k);
+	}
+}
+int main()  
+{ 
+   //1133
+	int m,n;
+	int i=0;
+	while (scanf("%d%d",&m,&n)!=EOF&&!(m==0&&n==0))
+	{
+		i++;
+		if(m<n)
+		{
+			cout<<"Test #"<<i<<":"<<endl;
+			cout<<0<<endl;
+		}
+		else
+		{
+			cout<<"Test #"<<i<<":"<<endl;
+			memset(a,0,sizeof(a));
+			a[100]=1;
+			if(n==0)
+			{
+				jiecheng(m,0);
+
+			}
+			else{
+				dashu(m-n+1);
+				jiecheng(m+n,m+1);
+			}
+			int j=0;
+			while (!a[j])j++;      //去掉前面的0  
+			printf("%d", a[j++]);      //最高位不需要补齐4位  
+			while (j<=100)  
+			{  
+				printf("%04d", a[j]);  
+				j++;  
+			}  
+			cout << endl;  
+		}
+	}
+	system("pause");
+	return 0;
+}

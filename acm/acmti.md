@@ -16,6 +16,11 @@
 [2069](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2069.txt)
 [2152](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2152.txt)
 # Catalan number
-## h(n)=(4n-2)/(n+1)*h(n-1)(n>1) h(0)=1
-## h(n)=C(2n,n)/(n+1)=P(2n,n)/(n+1)!=(2n)!/(n!*(n+1)!) (n=1,2,3,...)
+### h(n)=(4n-2)/(n+1)*h(n-1)(n>1) h(0)=1
+### h(n)=C(2n,n)/(n+1)=P(2n,n)/(n+1)!=(2n)!/(n!*(n+1)!) (n=1,2,3,...)
 [1134](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1134.txt)
+[1133](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1133.txt)
+[2018](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2018.txt)
+[2041](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2041.txt)
+[2067](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2067.txt)
+[1130](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1130.txt)

@@ -1,0 +1,25 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+//开始想成母函数了，那个是无差别的，这个的顺序是有差别的
+int a[41];  
+int main() {  
+    int n,m;  
+	
+	memset(a,0,sizeof(a));
+	a[1]=1;a[2]=1;
+	for (int i = 3; i < 41; i++)
+	{
+		a[i]=a[i-1]+a[i-2]	;
+
+	}
+	cin>>n;
+	for (int i=0;i<n;i++)
+	{
+		cin>>m;
+		cout<<a[m]<<endl;
+	}
+	system("pause");
+	return 0;
+}
