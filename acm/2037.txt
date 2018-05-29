@@ -1,0 +1,63 @@
+#include<iostream>
+#include<algorithm>  
+#include<string>
+using namespace std;
+struct node
+{
+	int a;
+	int b;
+}a[101];
+int cmp(node a,node b)
+{
+	if(a.b==b.b)
+		return a.a>b.a;
+	else 
+		return a.b<b.b;
+}
+int main()  
+{ 
+   //2037
+	int s[101];
+	memset(s,0,sizeof(s));
+	int n;
+	while (cin>>n&&n!=0)
+	{
+		for (int i = 0; i < n; i++)
+		{
+			cin>>a[i].a>>a[i].b;
+		}
+		sort(a,a+n,cmp);
+		//for (int i = 0; i < n; i++)
+		//{
+		//	cout<<a[i].a<<" "<<a[i].b<<endl;
+		//}
+		/*s[0]=1;
+		int k=0;
+		int max=0;
+		for (int i = 1; i < n; i++)
+		{
+			max=s[i];
+			for (int j = 0; j < i; j++)
+			{
+				if(a[i].a>=a[j].b)
+					if(max<(s[j]+1))
+						max=s[j]+1;
+			}
+			s[i]=max;
+		}
+		cout<<s[n-1]<<endl;*/
+		int k=1;
+		int t=a[0].b;
+		for(int i=1;i<n;i++)//如果开始 的时间比他这个结束的时间迟，则就k++   
+        {  
+            if(a[i].a>=t)//说明这个电视你能够看   
+            {  
+                t=a[i].b;  
+                k++;  
+            }  
+        }  
+		cout<<k<<endl;
+	}
+	system("pause");
+	return 0;
+}

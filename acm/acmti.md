@@ -26,3 +26,5 @@
 [2067](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2067.txt)
 [1130](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1130.txt)
 [1131](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/1131.txt)
+# Greedy Algorithm
+[2037](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/acm/2037.txt)
