@@ -1,0 +1,30 @@
+class Solution:
+    def fourSum(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: List[List[int]]
+        """
+        res = set()              #为了去掉重复的
+        dict = {}
+        if len(nums) == 0:
+            return []
+        nums.sort()
+        n = len(nums)
+        for i in range(n-1):      #先求任意两个数之和，
+            for j in range(i+1,n):
+                sum = nums[i]+nums[j]
+
+                if sum not in dict:
+                    dict[sum] = [(i,j)]
+                else:
+                    dict[sum].append((i,j))
+        for k in range(2,n-1):    #让target减去求和后的数，看是否在字典中，如在，则满足
+            for m in range(k+1,n):
+                sum2 = target-nums[k]-nums[m]
+                if sum2 in dict:
+                    for s in dict[sum2]:
+                        if s[1]<k:
+                            res.add((nums[s[0]],nums[s[1]],nums[k],nums[m]))
+
+        return [list(i) for i in res]

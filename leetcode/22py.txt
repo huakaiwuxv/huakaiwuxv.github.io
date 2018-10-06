@@ -1,0 +1,21 @@
+class Solution:
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        
+        if n == 0:        #当n为0，返回空
+            return []
+        res = []
+        self.shu(n,n,"",res)   #调用递归函数
+        return res
+    
+    def shu(self,left,right,s,res):
+        if left == 0 and right == 0:  #left ,right 都为0，递归完毕
+            res.append(s)
+            return
+        if left>0:
+            self.shu(left-1,right,s+"(",res)#递归调用，第一个为左括号
+        if right>left:
+            self.shu(left,right-1,s+")",res)#递归调用，最后一个为右括号
