@@ -1,0 +1,19 @@
+class Solution:
+    def nextPermutation(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        target = -1
+        for i in range(len(nums)-1, 0, -1):  #倒着比较
+            if nums[i] > nums[i-1]:  
+                target = i-1
+                break
+        if target == -1:                    #没有比较出，返回逆序
+            nums.reverse()
+        else:
+            for i in range(len(nums)-1, target, -1):  #因为在i后，是从大到小排列的，所以找出的第一个nums[i] > nums[target]的，i便找到了
+                if nums[i] > nums[target]:
+                    nums[i], nums[target] = nums[target], nums[i]
+                    break
+            nums[target+1:len(nums)] = nums[target+1:len(nums)][::-1] #切片操作

@@ -12,3 +12,18 @@
 
 [24](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/24py.txt)
 
+[31](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/31py.txt)
+
+[771](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/771.txt)
+
+[535](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/535.txt)
+
+[42](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/42.txt)
+
+[94](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/94.txt)
+
+[144](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/144.txt)
+
+[145](https://github.com/huakaiwuxv/huakaiwuxv.github.io/edit/master/leetcode/145.txt)
+
+

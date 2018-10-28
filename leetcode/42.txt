@@ -1,0 +1,32 @@
+class Solution:
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        # ½«heightÐ´³É×Öµä
+        if len(height)<=1:
+            return 0
+        maxi = max(height)
+        middle = height.index(maxi)
+        left = 0
+        right = 0
+        area = 0
+        for i in range(0,middle):
+            if left>height[i]:
+                area += left-height[i]
+            else:
+                left = height[i]
+        i = len(height)-1
+        while i!=middle:
+            if right>height[i]:
+                area += right-height[i]
+            else:
+                right = height[i]
+            i-=1
+        return area
+
+
+m=[0,1,0,2,1,0,1,3,2,1,2,1]
+t = Solution()
+print(t.trap(m))
