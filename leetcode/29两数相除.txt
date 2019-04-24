@@ -1,0 +1,28 @@
+//这个题看取值范围，取long
+class Solution {
+    public int divide(int dividend, int divisor) {
+        if(divisor == 0 || dividend == Integer.MIN_VALUE && divisor == -1)
+	        	return Integer.MAX_VALUE;
+        if(divisor == 1)
+            return dividend;
+        if(divisor == -1)
+            return -dividend;
+        int sign = ((dividend<0) ^ (divisor)<0)?-1:1;
+        long bei = Math.abs((long)dividend);
+        long chu = Math.abs((long)divisor);
+        int b=0;
+        long a;
+        long num;
+        while (bei>=chu) {
+            num=1;
+            a=chu;
+            while (bei>=(a<<1)) {
+                a<<=1;
+                num<<=1;	
+            }
+            b+=num;
+            bei-=a;
+        }
+        return b*sign;
+    }
+}
