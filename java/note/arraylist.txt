@@ -1,0 +1,9 @@
+通过方法contains 判断一个对象是否在容器中
+判断标准： 是否是同一个对象，而不是name是否相同
+
+不指定泛型的容器，可以存放任何类型的元素
+ List heros = new ArrayList();
+指定了泛型的容器，只能存放指定类型的元素以及其子类
+  List<Hero> genericheros = new ArrayList<Hero>();
+
+

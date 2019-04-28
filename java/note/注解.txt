@@ -1,0 +1,19 @@
+JDK自带注解
+@override
+覆盖重写
+@Deprecated
+
+@SuppressWarnings("deprecation")
+忽略过时的
+
+常见第三方注解
+spring :@Autowired 自动注入 @Service @Repository
+
+Mybatis :@InterProvider @UpdateProvider @Options
+
+注解的分类
+按照运行机制分：源码注解 编译时注解  运行时注解
+按照来源分 ：来自JDK的注解 来自第三方的注解 我们自己定义的注解
+元注解
+
+
