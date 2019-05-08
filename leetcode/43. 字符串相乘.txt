@@ -1,0 +1,32 @@
+class Solution {
+    public String multiply(String num1, String num2) {
+        if(num1.length() < 0 || num2.length() < 0) return "";
+        int[] res = new int[num1.length()+num2.length()];
+        Arrays.fill(res,0);
+        int a, b ,s;
+        int carry=0;
+        for (int i = num1.length()-1; i >= 0; i--) {
+			for (int j = num2.length()-1; j >=0 ; j--) {
+				a = num1.charAt(i)-'0';
+				b = num2.charAt(j)-'0';
+				s = a*b;
+				res[i+j+1]+=s;
+				carry=res[i+j+1]/10;
+				res[i+j+1]=res[i+j+1]%10;
+				res[i+j]+=carry;
+				carry=0;
+			}
+		}
+        StringBuffer resString = new StringBuffer();
+        int m = 0,i=0;
+        while(i < res.length-1 && res[i] == 0) 
+            i++;
+
+        for (;i <res.length; i++) {
+			resString.append(res[i]);
+			System.out.println(res[i]);
+		}
+        System.out.println(resString.toString());
+		return resString.toString();
+    }
+}
