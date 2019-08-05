@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<!-- saved from url=(0052)http://getbootstrap.com/docs/4.0/examples/dashboard/ -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"></meta>
+		<meta name="description" content=""></meta>
+		<meta name="author" content=""></meta>
+
+		<title>维修记录</title>
+		<!-- Bootstrap core CSS -->
+		<link href="asserts/css/bootstrap.min.css" th:href="@{/webjars/bootstrap/4.0.0/css/bootstrap.css}" rel="stylesheet"/>
+
+		<!-- Custom styles for this template -->
+		<link href="asserts/css/dashboard.css" th:href="@{/asserts/css/dashboard.css}" rel="stylesheet"/>
+		<style type="text/css">
+			/* Chart.js */
+			
+			@-webkit-keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			@keyframes chartjs-render-animation {
+				from {
+					opacity: 0.99
+				}
+				to {
+					opacity: 1
+				}
+			}
+			
+			.chartjs-render-monitor {
+				-webkit-animation: chartjs-render-animation 0.001s;
+				animation: chartjs-render-animation 0.001s;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--引入抽取的topbar-->
+		<!--模板名：会使用thymeleaf的前后缀配置规则进行解析-->
+		<div th:replace="commons/bar::topbar"></div>
+
+		<div class="container-fluid">
+			<div class="row">
+				<!--引入侧边栏-->
+				<div th:replace="commons/bar::#sidebar(activeUri='weixiujilus')"></div>
+
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+					<!--需要区分是员工修改还是添加；-->
+					<form th:action="@{/weixiujilu}"  method="post">
+						<!--发送put请求修改员工数据-->
+						<!--
+						1、SpringMVC中配置HiddenHttpMethodFilter;（SpringBoot自动配置好的）
+						2、页面创建一个post表单
+						3、创建一个input项，name="_method";值就是我们指定的请求方式
+						-->
+						<input type="hidden" name="_method" value="put" th:if="${weixiujilu!=null}"/>
+						<input type="hidden" name="id" th:if="${weixiujilu!=null}" th:value="${weixiujilu.id}"/>
+						
+						<div class="form-group">
+							<label>车牌号</label>
+							<input name="chepaihao" type="text" class="form-control" placeholder="蒙H 12345" th:value="${weixiujilu!=null}?${weixiujilu.chepaihao}"/>
+						</div>
+						<div class="form-group">
+							<label>车主姓名</label>
+							<input name="chezhuxingming" type="text" class="form-control" placeholder="zhangsan" th:value="${weixiujilu!=null}?${weixiujilu.chezhuxingming}"/>
+						</div>
+						
+						<div class="form-group">
+							<label>服务工时</label>
+							<input name="fuwugongshi" type="text" class="form-control" placeholder="1小时" th:value="${weixiujilu!=null}?${weixiujilu.fuwugongshi}"/>
+						</div>
+						<div class="form-group">
+							<label>配件金额</label>
+							<input name="peijianjine" type="text" class="form-control" placeholder="80" th:value="${weixiujilu!=null}?${weixiujilu.peijianjine}"/>
+						</div>
+						<div class="form-group">
+							<label>所收金额</label>
+							<input name="suoshoujine" type="text" class="form-control" placeholder="80" th:value="${weixiujilu!=null}?${weixiujilu.suoshoujine}"/>
+						</div>
+						
+						<div class="form-group">
+							<label>维修类型</label>
+							<input name="weixiuleixing" type="text" class="form-control" placeholder="换刹车片" th:value="${weixiujilu!=null}?${weixiujilu.weixiuleixing}"/>
+						</div>
+						<div class="form-group">
+							<label>是否结算</label>
+							<input name="shifoujiesuan" type="text" class="form-control" placeholder="是" th:value="${weixiujilu!=null}?${weixiujilu.shifoujiesuan}"/>
+						</div>
+						
+						<div class="form-group">
+							<label>结算类型</label>
+							<input name="jiesuanleixing" type="text" class="form-control" placeholder="现金" th:value="${weixiujilu!=null}?${weixiujilu.jiesuanleixing}"/>
+						</div>
+						<div class="form-group">
+							<label>附录</label>
+							<input name="fulu" type="text" class="form-control" placeholder="" th:value="${weixiujilu!=null}?${weixiujilu.fulu}"/>
+						</div>
+						<!-- 
+						<div class="form-group">
+							<label>是否办洗车卡</label><br/>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="huiyuanka" value="1" th:checked="${kehuxinxi!=null}?${kehuxinxi.huiyuanka==1}"/>
+								<label class="form-check-label">是</label>
+							</div>
+							<div class="form-check form-check-inline">
+								<input class="form-check-input" type="radio" name="huiyuanka" value="0" th:checked="${kehuxinxi!=null}?${kehuxinxi.huiyuanka==0}"/>
+								<label class="form-check-label">否</label>
+							</div>
+						</div>
+						 -->
+						<!-- 
+						<div class="form-group">
+							<label>department</label>
+							
+							<select class="form-control" name="department.id">
+								<option th:selected="${emp!=null}?${dept.id == emp.department.id}" th:value="${dept.id}" th:each="dept:${depts}" th:text="${dept.departmentName}">1</option>
+							</select>
+						</div>
+						<div class="form-group">
+							<label>Birth</label>
+							<input name="birth" type="text" class="form-control" placeholder="zhangsan" th:value="${emp!=null}?${#dates.format(emp.birth, 'yyyy-MM-dd HH:mm')}"/>
+						</div>
+						 -->
+						<button type="submit" class="btn btn-primary" th:text="${weixiujilu!=null}?'修改':'添加'">添加</button>
+					</form>
+				</main>
+			</div>
+		</div>
+
+		<!-- Bootstrap core JavaScript
+    ================================================== -->
+		<!-- Placed at the end of the document so the pages load faster -->
+		<script type="text/javascript" src="asserts/js/jquery-3.2.1.slim.min.js" th:src="@{/webjars/jquery/3.3.1/jquery.js}"></script>
+		<script type="text/javascript" src="asserts/js/popper.min.js" th:src="@{/webjars/popper.js/1.11.1/dist/popper.js}"></script>
+		<script type="text/javascript" src="asserts/js/bootstrap.min.js" th:src="@{/webjars/bootstrap/4.0.0/js/bootstrap.js}"></script>
+
+		<!-- Icons -->
+		<script type="text/javascript" src="asserts/js/feather.min.js" th:src="@{/asserts/js/feather.min.js}"></script>
+		<script>
+			feather.replace()
+		</script>
+
+	</body>
+
+</html>
